@@ -28,7 +28,7 @@ export class UserService {
     if (dto.role === ROLE_TYPE.ADMIN)
       throw new BadRequestException('Invalid role');
     const role = await this.roleService.findOneWithType(
-      dto.role,
+      dto.role ?? ROLE_TYPE.CUSTOMER,
     );
 
     if (userExists) {
